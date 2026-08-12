@@ -27,6 +27,10 @@
                         primary: '#14121A', // Midnight aubergine, no pure black
                         accent: '#D95A40', // Terracotta, no generic purple/blue
                         surface: 'rgba(20, 18, 26, 0.03)', // Extremely subtle tint for depth
+                        
+                        // Solid tinted colors to replace muddy alpha transparencies (Impeccable rule)
+                        secondaryDark: '#E5E0D8', // Warm cream for text on dark backgrounds
+                        secondaryLight: '#615E69', // Tinted aubergine-gray for text on light backgrounds
                     },
                     transitionTimingFunction: {
                         'emil': 'cubic-bezier(0.22, 1, 0.36, 1)', // Emil Kowalski's snappy ease
@@ -48,11 +52,13 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Emil Kowalski Scroll Reveal Classes */
+        /* Emil Kowalski Scroll Reveal Classes with GPU Acceleration */
         .reveal-up {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
         }
         
         .reveal-up.is-visible {
@@ -80,6 +86,8 @@
             background-color: currentColor;
             transform-origin: bottom right;
             transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+            backface-visibility: hidden;
         }
         .link-hover:hover::after {
             transform: scaleX(1);
@@ -102,7 +110,10 @@
         }
     </style>
 </head>
-<body class="selection:bg-accent selection:text-base">
+<body class="selection:bg-accent selection:text-base text-primary">
+
+    <!-- Taste Skill: Editorial SVG Noise Overlay -->
+    <div class="pointer-events-none fixed inset-0 z-[9999] opacity-[0.03] mix-blend-multiply" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);"></div>
 
     <!-- NAVIGATION (Airy, Minimalist) -->
     <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-8 flex justify-between items-center mix-blend-difference text-base pointer-events-none">
@@ -131,23 +142,25 @@
 
         <div class="relative z-10 text-base max-w-7xl mx-auto w-full">
             <div class="reveal-up">
-                <span class="text-xs md:text-sm font-medium uppercase tracking-[0.2em] mb-6 block text-base/70">
+                <span class="text-xs md:text-sm font-medium uppercase tracking-[0.2em] mb-6 block text-secondaryDark">
                     Corporate House of Brands
                 </span>
             </div>
             
-            <h1 class="font-serif text-5xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tighter mb-8 reveal-up reveal-delay-1">
+            <!-- Taste Skill: Fluid Typography via clamp() -->
+            <h1 class="font-serif text-[clamp(4rem,9vw,10rem)] leading-[0.9] tracking-tighter mb-8 reveal-up reveal-delay-1">
                 Global Efficacy.<br>
                 <span class="italic font-light">Indian Accessibility.</span>
             </h1>
             
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 reveal-up reveal-delay-2">
-                <p class="text-base/80 font-light text-lg md:text-xl max-w-xl leading-relaxed">
+                <!-- Taste Skill: Luxurious line-height (leading-[1.7]) -->
+                <p class="text-secondaryDark font-light text-lg md:text-xl max-w-xl leading-[1.7]">
                     We democratize premium wellness and beauty by curating scientifically proven formulations from around the world, delivering uncompromising quality at unprecedented value.
                 </p>
                 <a href="#portfolio" class="group flex items-center gap-4 text-sm font-medium uppercase tracking-widest text-base">
                     <span class="link-hover">Explore Portfolio</span>
-                    <div class="w-10 h-10 rounded-full border border-base/30 flex items-center justify-center group-hover:bg-base group-hover:text-primary transition-all duration-500 ease-emil">
+                    <div class="w-10 h-10 rounded-full border border-secondaryDark flex items-center justify-center group-hover:bg-base group-hover:text-primary transition-all duration-500 ease-emil" style="will-change: background-color, color;">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </div>
                 </a>
@@ -159,23 +172,24 @@
     <section id="who-we-are" class="py-32 md:py-48 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
             <div class="lg:col-span-5 reveal-up">
-                <h2 class="font-serif text-4xl md:text-6xl leading-tight text-primary">
+                <h2 class="font-serif text-5xl md:text-6xl leading-tight text-primary">
                     Elevating the<br>
-                    <span class="italic text-primary/60">Everyday.</span>
+                    <span class="italic text-secondaryLight">Everyday.</span>
                 </h2>
-                <div class="mt-12 w-full h-[600px] overflow-hidden rounded-sm">
-                    <img src="assets/images/curation_map.jpg" alt="Global Curation Network" class="w-full h-full object-cover hover:scale-105 transition-transform duration-[1.5s] ease-emil">
+                <div class="mt-12 w-full h-[600px] overflow-hidden rounded-sm" style="transform: translateZ(0);">
+                    <img src="assets/images/curation_map.jpg" alt="Global Curation Network" class="w-full h-full object-cover hover:scale-105 transition-transform duration-[1.5s] ease-emil" style="will-change: transform;">
                 </div>
             </div>
             
             <div class="lg:col-span-6 lg:col-start-7 lg:mt-32 space-y-12">
-                <p class="text-2xl md:text-3xl font-light leading-snug text-primary/90 reveal-up">
+                <!-- Taste Skill: Luxurious line-height (leading-[1.7]) -->
+                <p class="text-2xl md:text-3xl font-light leading-[1.6] text-primary reveal-up">
                     At Loka Brands, we believe that premium quality should not be a geographic privilege. Headquartered in Warangal, we are engineering an omnichannel ecosystem designed for the modern Indian market.
                 </p>
-                <p class="text-lg md:text-xl font-light leading-relaxed text-primary/60 reveal-up reveal-delay-1">
+                <p class="text-lg md:text-xl font-light leading-[1.7] text-secondaryLight reveal-up reveal-delay-1">
                     We do not believe in reinventing the wheel; we believe in perfecting its delivery. Our global curation team identifies the most effective, clinically backed products succeeding in Western and East-Asian markets.
                 </p>
-                <p class="text-lg md:text-xl font-light leading-relaxed text-primary/60 reveal-up reveal-delay-2">
+                <p class="text-lg md:text-xl font-light leading-[1.7] text-secondaryLight reveal-up reveal-delay-2">
                     We leverage robust domestic manufacturing to bring these transformative solutions to India—bypassing heavy import markups and delivering direct value.
                 </p>
                 
@@ -192,9 +206,9 @@
     <section id="portfolio" class="py-32 md:py-48 bg-primary text-base px-6 md:px-12">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start mb-24 reveal-up">
-                <h2 class="font-serif text-4xl md:text-7xl leading-tight">
+                <h2 class="font-serif text-[clamp(2.5rem,5vw,5rem)] leading-tight">
                     Flagship Innovation.<br>
-                    <span class="italic text-base/50">Tailored for India.</span>
+                    <span class="italic text-secondaryDark">Tailored for India.</span>
                 </h2>
                 <span class="text-xs uppercase tracking-[0.2em] text-accent mt-4 md:mt-0">Phase 1</span>
             </div>
@@ -203,37 +217,38 @@
                 <div class="order-2 lg:order-1 space-y-16">
                     <div class="reveal-up">
                         <h3 class="font-serif text-3xl md:text-5xl mb-6">Introducing Zyrin™</h3>
-                        <p class="text-lg font-light text-base/70 leading-relaxed">
+                        <p class="text-lg font-light text-secondaryDark leading-[1.7]">
                             Operating exclusively in the wellness and beauty segment, Zyrin bridges the gap between luxury global formulations and everyday affordability.
                         </p>
                     </div>
                     
                     <div class="space-y-12">
-                        <div class="border-t border-base/10 pt-8 reveal-up">
+                        <!-- Replaced border-base/10 with a solid tinted border for cleaner rendering -->
+                        <div class="border-t border-[#332E3E] pt-8 reveal-up">
                             <h4 class="text-sm uppercase tracking-widest font-medium mb-3 text-accent">Global Curation</h4>
-                            <p class="font-light text-base/70">Sourcing the world’s most sought-after ingredients, from K-Beauty’s Snow Mushroom to clinically dosed peptides.</p>
+                            <p class="font-light text-secondaryDark leading-[1.7]">Sourcing the world’s most sought-after ingredients, from K-Beauty’s Snow Mushroom to clinically dosed peptides.</p>
                         </div>
-                        <div class="border-t border-base/10 pt-8 reveal-up reveal-delay-1">
+                        <div class="border-t border-[#332E3E] pt-8 reveal-up reveal-delay-1">
                             <h4 class="text-sm uppercase tracking-widest font-medium mb-3 text-accent">Uncompromising Value</h4>
-                            <p class="font-light text-base/70">Owning our D2C distribution allows Zyrin to deliver formulations rivaling ultra-premium brands at a fraction of the cost.</p>
+                            <p class="font-light text-secondaryDark leading-[1.7]">Owning our D2C distribution allows Zyrin to deliver formulations rivaling ultra-premium brands at a fraction of the cost.</p>
                         </div>
-                        <div class="border-t border-base/10 pt-8 reveal-up reveal-delay-2">
+                        <div class="border-t border-[#332E3E] pt-8 reveal-up reveal-delay-2">
                             <h4 class="text-sm uppercase tracking-widest font-medium mb-3 text-accent">Results-Driven</h4>
-                            <p class="font-light text-base/70">No gimmicks. Just scientifically validated wellness ingredients formulated for maximum efficacy and safety.</p>
+                            <p class="font-light text-secondaryDark leading-[1.7]">No gimmicks. Just scientifically validated wellness ingredients formulated for maximum efficacy and safety.</p>
                         </div>
                     </div>
 
                     <div class="pt-8 reveal-up">
                         <button onclick="openModal('zyrin-modal')" class="group flex items-center gap-4 text-sm font-medium uppercase tracking-widest">
                             <span class="link-hover">Discover the Regimen</span>
-                            <div class="w-8 h-8 rounded-full border border-base/30 flex items-center justify-center group-hover:bg-base group-hover:text-primary transition-all duration-500 ease-emil">
+                            <div class="w-8 h-8 rounded-full border border-secondaryDark flex items-center justify-center group-hover:bg-base group-hover:text-primary transition-all duration-500 ease-emil" style="will-change: background-color, color;">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </div>
                         </button>
                     </div>
                 </div>
                 
-                <div class="order-1 lg:order-2 h-[600px] lg:h-[800px] w-full reveal-up">
+                <div class="order-1 lg:order-2 h-[600px] lg:h-[800px] w-full reveal-up" style="transform: translateZ(0);">
                     <img src="assets/images/zyrin_serum.jpg" alt="Zyrin Serum" class="w-full h-full object-cover rounded-sm">
                 </div>
             </div>
@@ -243,36 +258,36 @@
     <!-- ECOSYSTEM (Minimalist List, No Background Cards) -->
     <section id="ecosystem" class="py-32 md:py-48 px-6 md:px-12 max-w-7xl mx-auto">
         <div class="mb-24 reveal-up">
-            <h2 class="font-serif text-4xl md:text-7xl leading-tight text-primary max-w-3xl">
+            <h2 class="font-serif text-[clamp(2.5rem,5vw,5rem)] leading-tight text-primary max-w-3xl">
                 Seamlessly Integrated.<br>
-                <span class="italic text-primary/40">Universally Accessible.</span>
+                <span class="italic text-secondaryLight">Universally Accessible.</span>
             </h2>
         </div>
 
         <div class="flex flex-col gap-12 md:gap-0 border-t border-primary/10">
             <!-- List Item 1 -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-12 border-b border-primary/10 reveal-up hover:bg-surface transition-colors duration-500 ease-emil">
-                <div class="md:col-span-2 font-serif text-4xl text-primary/20">01</div>
+                <div class="md:col-span-2 font-serif text-4xl text-[#AFAAB9]">01</div>
                 <div class="md:col-span-4 font-medium text-2xl text-primary">Digital-First<br>Experience</div>
-                <div class="md:col-span-6 font-light text-primary/60 text-lg leading-relaxed">
+                <div class="md:col-span-6 font-light text-secondaryLight text-lg leading-[1.7]">
                     Proprietary D2C platforms offering personalized shopping, exclusive drops, and comprehensive product education directly to the consumer.
                 </div>
             </div>
             
             <!-- List Item 2 -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-12 border-b border-primary/10 reveal-up hover:bg-surface transition-colors duration-500 ease-emil">
-                <div class="md:col-span-2 font-serif text-4xl text-primary/20">02</div>
+                <div class="md:col-span-2 font-serif text-4xl text-[#AFAAB9]">02</div>
                 <div class="md:col-span-4 font-medium text-2xl text-primary">Marketplace<br>Dominance</div>
-                <div class="md:col-span-6 font-light text-primary/60 text-lg leading-relaxed">
+                <div class="md:col-span-6 font-light text-secondaryLight text-lg leading-[1.7]">
                     Strategic partnerships with India’s leading e-commerce giants ensure rapid, reliable, and nationwide fulfillment.
                 </div>
             </div>
             
             <!-- List Item 3 -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-12 border-b border-primary/10 reveal-up hover:bg-surface transition-colors duration-500 ease-emil">
-                <div class="md:col-span-2 font-serif text-4xl text-primary/20">03</div>
+                <div class="md:col-span-2 font-serif text-4xl text-[#AFAAB9]">03</div>
                 <div class="md:col-span-4 font-medium text-2xl text-primary">Retail<br>Presence</div>
-                <div class="md:col-span-6 font-light text-primary/60 text-lg leading-relaxed">
+                <div class="md:col-span-6 font-light text-secondaryLight text-lg leading-[1.7]">
                     A meticulously planned rollout into premium physical showrooms and modern trade outlets, allowing customers to experience our brands in person.
                 </div>
             </div>
@@ -282,18 +297,18 @@
     <!-- LEADERSHIP (Impeccable Image Pairing) -->
     <section id="leadership" class="py-32 md:py-48 px-6 md:px-12 bg-surface">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
-            <div class="h-[600px] w-full reveal-up">
-                <img src="assets/images/founder.jpg" alt="Sai Revanth Chandupatla" class="w-full h-full object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 ease-emil">
+            <div class="h-[600px] w-full reveal-up" style="transform: translateZ(0);">
+                <img src="assets/images/founder.jpg" alt="Sai Revanth Chandupatla" class="w-full h-full object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 ease-emil" style="will-change: filter;">
             </div>
             
             <div class="space-y-10">
                 <div class="reveal-up">
                     <span class="text-xs uppercase tracking-[0.2em] text-accent mb-4 block">Leadership</span>
                     <h2 class="font-serif text-4xl md:text-5xl text-primary mb-2">Sai Revanth Chandupatla</h2>
-                    <p class="font-light text-primary/50">Founder & Chief Executive Officer</p>
+                    <p class="font-light text-secondaryLight">Founder & Chief Executive Officer</p>
                 </div>
                 
-                <div class="space-y-6 font-light text-lg text-primary/70 leading-relaxed reveal-up reveal-delay-1">
+                <div class="space-y-6 font-light text-lg text-secondaryLight leading-[1.7] reveal-up reveal-delay-1">
                     <p>
                         Loka Brands is built on a foundation of rapid execution, technological integration, and global business acumen.
                     </p>
@@ -317,15 +332,15 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-24">
                 <div class="md:col-span-6">
                     <h3 class="font-serif text-3xl mb-6">Loka.</h3>
-                    <p class="font-light text-base/50 max-w-sm leading-relaxed">
+                    <p class="font-light text-secondaryDark max-w-sm leading-[1.7]">
                         Innovation Hub | Warangal, India<br>
                         Connecting Global Science with Indian Consumers.
                     </p>
                 </div>
                 
                 <div class="md:col-span-3">
-                    <h4 class="text-xs uppercase tracking-widest text-base/30 mb-6">Corporate</h4>
-                    <ul class="space-y-4 font-light text-base/80">
+                    <h4 class="text-xs uppercase tracking-widest text-[#7C7785] mb-6">Corporate</h4>
+                    <ul class="space-y-4 font-light text-secondaryDark">
                         <li><a href="#portfolio" class="hover:text-accent transition-colors duration-300">Our Brands</a></li>
                         <li><a href="#leadership" class="hover:text-accent transition-colors duration-300">Leadership</a></li>
                         <li><button onclick="openModal('careers-modal')" class="hover:text-accent transition-colors duration-300">Careers</button></li>
@@ -333,8 +348,8 @@
                 </div>
                 
                 <div class="md:col-span-3">
-                    <h4 class="text-xs uppercase tracking-widest text-base/30 mb-6">Connect</h4>
-                    <ul class="space-y-4 font-light text-base/80">
+                    <h4 class="text-xs uppercase tracking-widest text-[#7C7785] mb-6">Connect</h4>
+                    <ul class="space-y-4 font-light text-secondaryDark">
                         <li><button onclick="openModal('contact-modal')" class="hover:text-accent transition-colors duration-300">Investor Relations</button></li>
                         <li><button onclick="openModal('contact-modal')" class="hover:text-accent transition-colors duration-300">Press & Media</button></li>
                         <li><a href="#" class="hover:text-accent transition-colors duration-300">Privacy Policy</a></li>
@@ -342,7 +357,7 @@
                 </div>
             </div>
             
-            <div class="pt-8 border-t border-base/10 text-xs font-light text-base/30 flex justify-between items-center">
+            <div class="pt-8 border-t border-[#332E3E] text-xs font-light text-[#7C7785] flex justify-between items-center">
                 <span>© 2026 Loka Brands Inc.</span>
                 <span>Designed with Impeccable Taste</span>
             </div>
@@ -350,14 +365,14 @@
     </footer>
 
     <!-- MODALS (Emil Kowalski Fade/Scale Interactions) -->
-    <div id="modal-container" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 opacity-0 pointer-events-none transition-opacity duration-500 ease-emil">
+    <div id="modal-container" class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 opacity-0 pointer-events-none transition-opacity duration-500 ease-emil" style="will-change: opacity;">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-primary/40 backdrop-blur-md" onclick="closeAllModals()"></div>
         
         <!-- Modal Content Wrapper -->
-        <div id="modal-content" class="relative bg-base w-full max-w-3xl max-h-[90vh] overflow-y-auto p-12 md:p-16 shadow-soft scale-95 transition-transform duration-500 ease-emil">
+        <div id="modal-content" class="relative bg-base w-full max-w-3xl max-h-[90vh] overflow-y-auto p-12 md:p-16 shadow-soft scale-95 transition-transform duration-500 ease-emil" style="will-change: transform;">
             
-            <button onclick="closeAllModals()" class="absolute top-6 right-6 text-primary/40 hover:text-primary transition-colors">
+            <button onclick="closeAllModals()" class="absolute top-6 right-6 text-secondaryLight hover:text-primary transition-colors">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
 
@@ -370,7 +385,7 @@
     <!-- Hidden Modal Templates -->
     <template id="tpl-philosophy-modal">
         <h2 class="font-serif text-4xl mb-8">The Loka Vision</h2>
-        <div class="font-light text-primary/80 leading-relaxed text-lg space-y-6">
+        <div class="font-light text-secondaryLight leading-[1.7] text-lg space-y-6">
             <p>Our model leverages agile global sourcing: we track real-time clinical ingredient trends in South Korea, Japan, France, and North America.</p>
             <p>Once an active ingredient passes strict double-blind clinical trials, our Warangal team integrates it into localized manufacturing within months, bypassing legacy supply chains entirely.</p>
         </div>
@@ -378,17 +393,17 @@
 
     <template id="tpl-zyrin-modal">
         <h2 class="font-serif text-4xl mb-4">Zyrin™ Regimen</h2>
-        <p class="font-light text-primary/60 mb-12">Formulated with clinically dosed active ingredients.</p>
+        <p class="font-light text-secondaryLight mb-12">Formulated with clinically dosed active ingredients.</p>
         
         <div class="space-y-8">
             <div class="border-b border-primary/10 pb-8">
                 <h4 class="text-xl font-medium mb-2">Snow Mushroom Intense Hydration</h4>
-                <p class="font-light text-primary/60 mb-4">Tremella Fuciformis extracted at high molecular weight.</p>
+                <p class="font-light text-secondaryLight mb-4">Tremella Fuciformis extracted at high molecular weight.</p>
                 <span class="text-accent text-sm font-medium">Value: ₹899</span>
             </div>
             <div class="border-b border-primary/10 pb-8">
                 <h4 class="text-xl font-medium mb-2">Bio-Active Peptide Barrier Repair</h4>
-                <p class="font-light text-primary/60 mb-4">Copper tri-peptide-1 for structural integrity.</p>
+                <p class="font-light text-secondaryLight mb-4">Copper tri-peptide-1 for structural integrity.</p>
                 <span class="text-accent text-sm font-medium">Value: ₹1,199</span>
             </div>
         </div>
@@ -396,9 +411,9 @@
 
     <template id="tpl-letter-modal">
         <h2 class="font-serif text-4xl mb-4">Letter from the Founder</h2>
-        <p class="text-xs uppercase tracking-widest text-primary/40 mb-12">Sai Revanth Chandupatla</p>
+        <p class="text-xs uppercase tracking-widest text-[#AFAAB9] mb-12">Sai Revanth Chandupatla</p>
         
-        <div class="font-light text-primary/80 leading-relaxed text-lg space-y-6">
+        <div class="font-light text-secondaryLight leading-[1.7] text-lg space-y-6">
             <p>Dear Partners and Consumers,</p>
             <p>When we established Loka Brands, we recognized a fundamental disparity: Indian consumers were paying exorbitant 60%+ import tariffs for globally proven active skincare.</p>
             <p>With our launch of Zyrin™, we are proving that luxury K-Beauty actives can be delivered to every household at honest, accessible prices.</p>
@@ -412,14 +427,14 @@
             <div class="py-8 border-b border-primary/10 flex justify-between items-center group">
                 <div>
                     <h4 class="text-xl font-medium mb-1 group-hover:text-accent transition-colors">Head of D2C Growth</h4>
-                    <p class="font-light text-primary/50 text-sm">Warangal HQ</p>
+                    <p class="font-light text-secondaryLight text-sm">Warangal HQ</p>
                 </div>
                 <button class="text-sm font-medium uppercase tracking-widest link-hover" onclick="alert('Application started')">Apply</button>
             </div>
             <div class="py-8 border-b border-primary/10 flex justify-between items-center group">
                 <div>
                     <h4 class="text-xl font-medium mb-1 group-hover:text-accent transition-colors">Formulation Chemist</h4>
-                    <p class="font-light text-primary/50 text-sm">Warangal HQ</p>
+                    <p class="font-light text-secondaryLight text-sm">Warangal HQ</p>
                 </div>
                 <button class="text-sm font-medium uppercase tracking-widest link-hover" onclick="alert('Application started')">Apply</button>
             </div>
@@ -430,13 +445,13 @@
         <h2 class="font-serif text-4xl mb-10">Contact Us</h2>
         <form onsubmit="event.preventDefault(); closeAllModals(); alert('Message sent successfully!');" class="space-y-8">
             <div>
-                <input type="text" placeholder="Full Name" required class="w-full bg-transparent border-b border-primary/20 py-4 font-light focus:outline-none focus:border-primary transition-colors placeholder:text-primary/30">
+                <input type="text" placeholder="Full Name" required class="w-full bg-transparent border-b border-primary/20 py-4 font-light focus:outline-none focus:border-primary transition-colors placeholder:text-secondaryLight">
             </div>
             <div>
-                <input type="email" placeholder="Email Address" required class="w-full bg-transparent border-b border-primary/20 py-4 font-light focus:outline-none focus:border-primary transition-colors placeholder:text-primary/30">
+                <input type="email" placeholder="Email Address" required class="w-full bg-transparent border-b border-primary/20 py-4 font-light focus:outline-none focus:border-primary transition-colors placeholder:text-secondaryLight">
             </div>
             <div>
-                <textarea placeholder="Your Message" rows="3" required class="w-full bg-transparent border-b border-primary/20 py-4 font-light focus:outline-none focus:border-primary transition-colors placeholder:text-primary/30 resize-none"></textarea>
+                <textarea placeholder="Your Message" rows="3" required class="w-full bg-transparent border-b border-primary/20 py-4 font-light focus:outline-none focus:border-primary transition-colors placeholder:text-secondaryLight resize-none"></textarea>
             </div>
             <button type="submit" class="bg-primary text-base px-8 py-4 text-sm font-medium uppercase tracking-widest hover:bg-accent transition-colors duration-500 ease-emil w-full">
                 Send Message
