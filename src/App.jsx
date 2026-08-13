@@ -40,14 +40,7 @@ export default function App() {
     <div ref={appRef} className="bg-[#000000] text-[#F5F5F7] min-h-screen font-sans selection:bg-[#0071E3]/30 selection:text-white">
       
       {/* Dynamic Ambient Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-80">
-        <ShaderGradientCanvas style={{ position: 'absolute', inset: 0 }}>
-          <ShaderGradient
-            control='query'
-            urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.5&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%231e1b4b&color2=%230f172a&color3=%23000000&envPreset=city&format=gif&fov=45&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=waterPlane&uAmplitude=2.5&uDensity=1.1&uFrequency=5.5&uSpeed=0.2&uStrength=1.5&uTime=0&wireframe=false'
-          />
-        </ShaderGradientCanvas>
-      </div>
+      <div className="fixed inset-0 z-0 ambient-mesh opacity-90 pointer-events-none"></div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 p-4 md:px-8 md:py-4 transition-all">
