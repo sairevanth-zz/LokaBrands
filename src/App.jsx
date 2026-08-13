@@ -117,9 +117,14 @@ export default function App() {
                   </motion.h2>
                   <motion.div 
                       initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}
-                      className="mt-12 w-full h-[600px] rounded-[2.5rem] p-2 glass-panel"
+                      className="mt-12 w-full h-[600px] rounded-[2.5rem] p-2 glass-panel relative overflow-hidden group"
                   >
-                    <img src="/assets/images/curation_map.jpg" alt="Global Curation Network" className="w-full h-full object-cover rounded-[2rem] hover:scale-[1.02] transition-transform duration-[2s] ease-out" />
+                    <img src="/assets/images/curation_map.jpg" alt="Global Curation Network" className="w-full h-full object-cover rounded-[2rem] group-hover:scale-[1.02] transition-transform duration-[2s] ease-out" />
+                    
+                    <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 md:right-auto glass-panel p-8 md:p-10 rounded-[2rem] max-w-lg border border-white/10 shadow-2xl backdrop-blur-3xl">
+                        <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-4 text-white">Borderless Curation.</h3>
+                        <p className="font-light text-white/70 text-lg leading-relaxed">We traverse the globe to source the most potent, clinically-proven actives, bringing world-class formulations to the modern Indian consumer.</p>
+                    </div>
                   </motion.div>
               </div>
           </div>
