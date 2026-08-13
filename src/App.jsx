@@ -18,7 +18,7 @@ const modalSpring = {
 };
 
 export default function App() {
-  const [activeEcosystemImage, setActiveEcosystemImage] = useState('assets/images/ecosystem_digital.jpg');
+  const [activeEcosystemImage, setActiveEcosystemImage] = useState('/assets/images/ecosystem_digital.jpg');
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState('');
 
@@ -40,15 +40,15 @@ export default function App() {
     <div className="bg-base text-primary min-h-screen">
       
       {/* Navigation */}
-      <nav className="fixed w-full z-50 mix-blend-difference text-[#FAFAF9] p-6 md:p-12 flex justify-between items-center pointer-events-none">
-        <div className="font-serif text-2xl tracking-wide pointer-events-auto cursor-pointer">Loka.</div>
-        <div className="hidden md:flex gap-12 font-medium text-sm tracking-widest uppercase pointer-events-auto">
+      <nav className="sticky top-0 w-full z-50 bg-base border-b-2 border-primary text-primary p-6 md:px-12 md:py-8 flex justify-between items-center">
+        <div className="font-serif text-2xl tracking-wide cursor-pointer">Loka.</div>
+        <div className="hidden md:flex gap-12 font-medium text-sm tracking-widest uppercase">
           <a href="#about" className="link-hover">Vision</a>
           <a href="#ecosystem" className="link-hover">Ecosystem</a>
           <a href="#portfolio" className="link-hover">Portfolio</a>
         </div>
         <button 
-          className="pointer-events-auto border border-[#FAFAF9] px-6 py-2 rounded-none text-sm font-medium uppercase tracking-widest hover:bg-[#FAFAF9] hover:text-[#1C1917] transition-colors duration-500"
+          className="border border-primary px-6 py-2 rounded-none text-sm font-medium uppercase tracking-widest hover:bg-primary hover:text-base transition-colors duration-500"
           onClick={() => openModal('contact')}
         >
           Partner With Us
@@ -123,7 +123,7 @@ export default function App() {
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}
                     className="mt-12 w-full h-[600px] overflow-hidden rounded-none shadow-none border border-primary border-b-2"
                 >
-                    <img src="assets/images/curation_map.jpg" alt="Global Curation Network" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[1.5s]" />
+                    <img src="/assets/images/curation_map.jpg" alt="Global Curation Network" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[1.5s]" />
                 </motion.div>
             </div>
         </div>
@@ -169,7 +169,7 @@ export default function App() {
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}
                     className="order-1 lg:order-2 h-[600px] lg:h-[800px] w-full border border-base border-b-2"
                 >
-                    <img src="assets/images/zyrin_serum.jpg" alt="Zyrin Serum" className="w-full h-full object-cover rounded-none" />
+                    <img src="/assets/images/zyrin_serum.jpg" alt="Zyrin Serum" className="w-full h-full object-cover rounded-none" />
                 </motion.div>
             </div>
         </div>
@@ -189,9 +189,9 @@ export default function App() {
                 
                 <div className="lg:col-span-7 flex flex-col gap-0 border-t border-primary border-b-2">
                     {[
-                        { num: '01', title: 'Digital-First\nExperience', desc: 'A proprietary tech stack powering personalized recommendations, seamless checkout, and subscription management.', img: 'assets/images/ecosystem_digital.jpg' },
-                        { num: '02', title: 'Marketplace\nDominance', desc: 'Strategic presence across top e-commerce platforms, optimized by data-driven marketing and agile supply chains.', img: 'assets/images/ecosystem_marketplace.jpg' },
-                        { num: '03', title: 'Retail\nPresence', desc: 'Omnichannel expansion through premium retail partnerships and experiential flagship stores.', img: 'assets/images/ecosystem_retail.jpg' },
+                        { num: '01', title: 'Digital-First\nExperience', desc: 'A proprietary tech stack powering personalized recommendations, seamless checkout, and subscription management.', img: '/assets/images/ecosystem_digital.jpg' },
+                        { num: '02', title: 'Marketplace\nDominance', desc: 'Strategic presence across top e-commerce platforms, optimized by data-driven marketing and agile supply chains.', img: '/assets/images/ecosystem_marketplace.jpg' },
+                        { num: '03', title: 'Retail\nPresence', desc: 'Omnichannel expansion through premium retail partnerships and experiential flagship stores.', img: '/assets/images/ecosystem_retail.jpg' },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
