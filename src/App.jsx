@@ -40,7 +40,14 @@ export default function App() {
     <div ref={appRef} className="bg-[#000000] text-[#F5F5F7] min-h-screen font-sans selection:bg-[#0071E3]/30 selection:text-white">
       
       {/* Dynamic Ambient Background */}
-      <div className="fixed inset-0 z-0 ambient-mesh opacity-90 pointer-events-none"></div>
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-80">
+        <ShaderGradientCanvas style={{ position: 'absolute', inset: 0 }}>
+          <ShaderGradient
+            control='query'
+            urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.2&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%234338ca&color2=%23312e81&color3=%23000000&envPreset=city&format=gif&fov=45&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=waterPlane&uAmplitude=5.2&uDensity=1.3&uFrequency=5.5&uSpeed=0.2&uStrength=2.4&uTime=0&wireframe=false'
+          />
+        </ShaderGradientCanvas>
+      </div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 p-4 md:px-8 md:py-4 transition-all">
@@ -62,9 +69,10 @@ export default function App() {
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center p-6 md:p-12 pb-24">
+        <section className="relative min-h-screen flex flex-col items-center justify-center p-6 md:p-12 pb-24 overflow-hidden">
           
-          <div className="z-10 text-center space-y-8 max-w-5xl mx-auto mt-24">
+          <div className="z-10 text-center space-y-12 max-w-5xl mx-auto mt-24">
+              
               <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5, ease: "easeOut" }}
                   className="w-full flex justify-center items-center h-64 md:h-80 lg:h-96 -mb-8"
@@ -72,13 +80,13 @@ export default function App() {
                   <iframe src="/liquid-logo/index.html" className="w-[500px] h-[500px] border-none pointer-events-auto" title="Loka Liquid Logo" />
               </motion.div>
               
-              <motion.h1 
+              <motion.h2 
                   initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
                   className="font-sans font-medium text-[clamp(3.5rem,8vw,8rem)] leading-[1.05] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 drop-shadow-2xl relative z-10 pointer-events-none"
               >
                   Premium Wellness<br />
                   Democratized.
-              </motion.h1>
+              </motion.h2>
               
               <motion.div 
                   initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}
