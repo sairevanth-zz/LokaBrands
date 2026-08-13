@@ -44,7 +44,7 @@ export default function App() {
         <ShaderGradientCanvas style={{ position: 'absolute', inset: 0 }}>
           <ShaderGradient
             control='query'
-            urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.2&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%234338ca&color2=%23312e81&color3=%23000000&envPreset=city&format=gif&fov=45&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=waterPlane&uAmplitude=5.2&uDensity=1.3&uFrequency=5.5&uSpeed=0.2&uStrength=2.4&uTime=0&wireframe=false'
+            urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%23000000&color2=%230a0a0a&color3=%231a1a1a&envPreset=city&format=gif&fov=45&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=waterPlane&uAmplitude=2.5&uDensity=1.1&uFrequency=5.5&uSpeed=0.1&uStrength=1.5&uTime=0&wireframe=false'
           />
         </ShaderGradientCanvas>
       </div>
