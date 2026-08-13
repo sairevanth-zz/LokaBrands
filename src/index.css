@@ -4,14 +4,15 @@
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
   
-  --color-base: #FAFAF9;
-  --color-primary: #1C1917;
-  --color-accent: #A16207;
-  --color-surface: rgba(28, 25, 23, 0.03);
-  --color-secondaryLight: #64748B;
-  --color-secondaryDark: #E8ECF0;
+  --color-base: #000000;
+  --color-surface: #1C1C1E;
+  --color-primary: #F5F5F7;
+  --color-secondaryLight: rgba(255, 255, 255, 0.55);
+  --color-secondaryDark: rgba(255, 255, 255, 0.15);
+  --color-accent: #0071E3;
   
   --ease-emil: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-apple: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @layer base {
@@ -20,33 +21,29 @@
     color: var(--color-primary);
     -webkit-font-smoothing: antialiased;
     font-family: var(--font-sans);
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
+    letter-spacing: -0.04em;
   }
+}
+
+/* Glass effect utilities */
+.glass-panel {
+  background: rgba(28, 28, 30, 0.5);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Base link hover effect */
 .link-hover {
   position: relative;
   display: inline-block;
+  transition: color 0.3s var(--ease-apple);
 }
 
-.link-hover::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: currentColor;
-  transform-origin: bottom right;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.link-hover:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+.link-hover:hover {
+  color: var(--color-primary);
 }
