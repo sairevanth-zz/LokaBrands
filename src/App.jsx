@@ -331,13 +331,13 @@ export default function App() {
         {/* Modals */}
         <AnimatePresence>
           {modalOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
               <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 exit={{ opacity: 0 }} 
                 transition={{ duration: 0.4 }}
-                className="absolute inset-0 bg-black/60 backdrop-blur-xl" 
+                className="absolute inset-0 bg-black/80 backdrop-blur-2xl" 
                 onClick={() => setModalOpen(false)}
               ></motion.div>
               
@@ -346,29 +346,29 @@ export default function App() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 10 }}
                 transition={modalSpring}
-                className="relative w-full max-w-3xl max-h-[90vh] overflow-hidden"
+                className="relative w-full max-w-2xl max-h-[90vh] overflow-hidden"
               >
-                <div className="w-full h-full p-12 md:p-16 glass-panel rounded-[2rem] overflow-y-auto custom-scrollbar border border-white/20">
+                <div className="w-full h-full p-8 md:p-12 bg-[#1C1C1E]/90 backdrop-blur-3xl rounded-[2rem] overflow-y-auto custom-scrollbar border border-white/10 shadow-2xl">
                   <button 
                     onClick={() => setModalOpen(false)} 
-                    className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors bg-white/10 p-2 rounded-full"
+                    className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-3 rounded-full backdrop-blur-xl"
                   >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
                   </button>
                   
-                  <div id="modal-body" className="relative z-10 text-white">
+                  <div id="modal-body" className="relative z-10 text-white mt-4">
                     {modalType === 'products' && (
                       <div>
-                        <h2 className="font-sans font-medium tracking-tighter text-5xl mb-6">Zyrin Formulations</h2>
-                        <p className="font-light text-white/60 text-xl mb-12">Formulated with clinically dosed active ingredients.</p>
+                        <h2 className="font-sans font-medium tracking-tighter text-4xl md:text-5xl mb-4">Zyrin Formulations</h2>
+                        <p className="font-light text-white/60 text-lg mb-10">Formulated with clinically dosed active ingredients.</p>
                         <div className="space-y-8">
-                            <div className="border-b border-white/10 pb-8">
-                                <h4 className="text-2xl font-medium mb-2 tracking-tight">Snow Mushroom Intense Hydration</h4>
+                            <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
+                                <h4 className="text-xl font-medium mb-2 tracking-tight">Snow Mushroom Intense Hydration</h4>
                                 <p className="font-light text-white/60 mb-4">Tremella Fuciformis extracted at high molecular weight.</p>
                                 <span className="text-[#0071E3] text-sm font-medium uppercase tracking-widest">Value: ₹899</span>
                             </div>
-                            <div className="border-b border-white/10 pb-8">
-                                <h4 className="text-2xl font-medium mb-2 tracking-tight">Bio-Active Peptide Barrier Repair</h4>
+                            <div className="bg-white/5 p-6 rounded-2xl border border-white/10">
+                                <h4 className="text-xl font-medium mb-2 tracking-tight">Bio-Active Peptide Barrier Repair</h4>
                                 <p className="font-light text-white/60 mb-4">Copper tri-peptide-1 for structural integrity.</p>
                                 <span className="text-[#0071E3] text-sm font-medium uppercase tracking-widest">Value: ₹1,199</span>
                             </div>
@@ -377,39 +377,39 @@ export default function App() {
                     )}
                     {modalType === 'careers' && (
                       <div>
-                        <h2 className="font-sans font-medium tracking-tighter text-5xl mb-12">Open Positions</h2>
-                        <div className="space-y-0 border-t border-white/10">
-                            <div className="py-8 border-b border-white/10 flex justify-between items-center group">
+                        <h2 className="font-sans font-medium tracking-tighter text-4xl md:text-5xl mb-10">Open Positions</h2>
+                        <div className="space-y-4">
+                            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group hover:bg-white/10 transition-colors">
                                 <div>
-                                    <h4 className="text-2xl font-medium mb-1 tracking-tight group-hover:text-[#0071E3] transition-colors">Head of D2C Growth</h4>
-                                    <p className="font-light text-white/60">Warangal HQ</p>
+                                    <h4 className="text-xl font-medium mb-1 tracking-tight group-hover:text-[#0071E3] transition-colors">Head of D2C Growth</h4>
+                                    <p className="font-light text-white/50 text-sm">Warangal HQ</p>
                                 </div>
-                                <button className="text-sm font-medium uppercase tracking-widest text-white hover:text-[#0071E3] transition-colors" onClick={() => alert('Application started')}>Apply</button>
+                                <button className="text-sm font-medium uppercase tracking-widest text-white hover:text-[#0071E3] transition-colors" onClick={() => alert('Application started')}>Apply Now</button>
                             </div>
-                            <div className="py-8 border-b border-white/10 flex justify-between items-center group">
+                            <div className="p-6 bg-white/5 rounded-2xl border border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group hover:bg-white/10 transition-colors">
                                 <div>
-                                    <h4 className="text-2xl font-medium mb-1 tracking-tight group-hover:text-[#0071E3] transition-colors">Formulation Chemist</h4>
-                                    <p className="font-light text-white/60">Warangal HQ</p>
+                                    <h4 className="text-xl font-medium mb-1 tracking-tight group-hover:text-[#0071E3] transition-colors">Formulation Chemist</h4>
+                                    <p className="font-light text-white/50 text-sm">Warangal HQ</p>
                                 </div>
-                                <button className="text-sm font-medium uppercase tracking-widest text-white hover:text-[#0071E3] transition-colors" onClick={() => alert('Application started')}>Apply</button>
+                                <button className="text-sm font-medium uppercase tracking-widest text-white hover:text-[#0071E3] transition-colors" onClick={() => alert('Application started')}>Apply Now</button>
                             </div>
                         </div>
                       </div>
                     )}
                     {modalType === 'contact' && (
                       <div>
-                        <h2 className="font-sans font-medium tracking-tighter text-5xl mb-10">Contact Us</h2>
-                        <form onSubmit={(e) => { e.preventDefault(); setModalOpen(false); alert('Message sent successfully!'); }} className="space-y-8">
+                        <h2 className="font-sans font-medium tracking-tighter text-4xl md:text-5xl mb-8">Contact Us</h2>
+                        <form onSubmit={(e) => { e.preventDefault(); setModalOpen(false); alert('Message sent successfully!'); }} className="space-y-6">
                             <div>
-                                <input type="text" placeholder="Full Name" required className="w-full bg-black/30 border border-white/10 py-4 px-6 font-light focus:outline-none focus:border-white transition-colors placeholder:text-white/30 rounded-2xl" />
+                                <input type="text" placeholder="Full Name" required className="w-full bg-black/50 border border-white/10 py-4 px-6 text-white font-light focus:outline-none focus:border-[#0071E3] focus:ring-1 focus:ring-[#0071E3] transition-all placeholder:text-white/40 rounded-xl" />
                             </div>
                             <div>
-                                <input type="email" placeholder="Email Address" required className="w-full bg-black/30 border border-white/10 py-4 px-6 font-light focus:outline-none focus:border-white transition-colors placeholder:text-white/30 rounded-2xl" />
+                                <input type="email" placeholder="Email Address" required className="w-full bg-black/50 border border-white/10 py-4 px-6 text-white font-light focus:outline-none focus:border-[#0071E3] focus:ring-1 focus:ring-[#0071E3] transition-all placeholder:text-white/40 rounded-xl" />
                             </div>
                             <div>
-                                <textarea placeholder="Your Message" rows="4" required className="w-full bg-black/30 border border-white/10 py-4 px-6 font-light focus:outline-none focus:border-white transition-colors placeholder:text-white/30 resize-none rounded-2xl"></textarea>
+                                <textarea placeholder="Your Message" rows="4" required className="w-full bg-black/50 border border-white/10 py-4 px-6 text-white font-light focus:outline-none focus:border-[#0071E3] focus:ring-1 focus:ring-[#0071E3] transition-all placeholder:text-white/40 resize-none rounded-xl"></textarea>
                             </div>
-                            <button type="submit" className="bg-white text-black px-8 py-5 text-sm font-medium uppercase tracking-widest hover:bg-white/80 transition-colors duration-500 w-full rounded-2xl">
+                            <button type="submit" className="bg-white text-black px-8 py-4 text-sm font-semibold uppercase tracking-widest hover:bg-gray-200 transition-colors duration-300 w-full rounded-xl shadow-lg mt-4">
                                 Send Message
                             </button>
                         </form>
