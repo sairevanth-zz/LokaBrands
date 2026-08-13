@@ -79,7 +79,7 @@ export default function App() {
                             We architect categories. A house of brands engineering the future of D2C wellness, beauty, and personal care.
                         </p>
                     </div>
-                    <div className="pt-4">
+                    <div className="self-end pb-2">
                         <a href="#portfolio" className="group inline-flex items-center gap-4 text-sm font-medium uppercase tracking-widest text-primary">
                             <span className="link-hover">Explore Portfolio</span>
                             <div className="w-10 h-10 rounded-none border border-primary border-b-2 flex items-center justify-center group-hover:bg-primary group-hover:text-base transition-all duration-500">
@@ -116,8 +116,7 @@ export default function App() {
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.1 }}
                     className="font-serif text-5xl md:text-7xl leading-tight"
                 >
-                    Elevating the<br />
-                    <span className="italic text-base/70">Everyday.</span>
+                    Elevating the <span className="italic text-secondaryLight">Everyday.</span>
                 </motion.h2>
                 <motion.div 
                     initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}
@@ -136,7 +135,7 @@ export default function App() {
                 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
                 className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8"
             >
-                <h2 className="font-serif text-6xl md:text-8xl">The<br/><span className="italic text-secondaryLight">Portfolio.</span></h2>
+                <h2 className="font-serif text-6xl md:text-8xl">The <span className="italic text-secondaryLight">Portfolio.</span></h2>
                 <div className="w-full md:w-1/3 text-secondaryDark font-light text-lg">
                     A meticulously curated portfolio spanning skincare, haircare, and clinical wellness.
                 </div>
@@ -182,16 +181,16 @@ export default function App() {
                 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
                 className="font-serif text-5xl md:text-7xl mb-24"
             >
-                The Loka<br/><span className="italic text-secondaryLight">Ecosystem.</span>
+                The Loka <span className="italic text-secondaryLight">Ecosystem.</span>
             </motion.h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
                 
                 <div className="lg:col-span-7 flex flex-col gap-0 border-t border-primary border-b-2">
                     {[
-                        { num: '01', title: 'Digital-First\nExperience', desc: 'A proprietary tech stack powering personalized recommendations, seamless checkout, and subscription management.', img: '/assets/images/ecosystem_digital.jpg' },
-                        { num: '02', title: 'Marketplace\nDominance', desc: 'Strategic presence across top e-commerce platforms, optimized by data-driven marketing and agile supply chains.', img: '/assets/images/ecosystem_marketplace.jpg' },
-                        { num: '03', title: 'Retail\nPresence', desc: 'Omnichannel expansion through premium retail partnerships and experiential flagship stores.', img: '/assets/images/ecosystem_retail.jpg' },
+                        { num: '01', title: 'Digital-First Experience', desc: 'A proprietary tech stack powering personalized recommendations, seamless checkout, and subscription management.', img: '/assets/images/ecosystem_digital.jpg' },
+                        { num: '02', title: 'Marketplace Dominance', desc: 'Strategic presence across top e-commerce platforms, optimized by data-driven marketing and agile supply chains.', img: '/assets/images/ecosystem_marketplace.jpg' },
+                        { num: '03', title: 'Retail Presence', desc: 'Omnichannel expansion through premium retail partnerships and experiential flagship stores.', img: '/assets/images/ecosystem_retail.jpg' },
                     ].map((item, idx) => (
                         <motion.div 
                             key={idx}
@@ -200,7 +199,7 @@ export default function App() {
                             onMouseEnter={() => setActiveEcosystemImage(item.img)}
                         >
                             <div className="md:col-span-2 font-serif text-4xl text-[#AFAAB9] group-hover:text-accent transition-colors duration-500">{item.num}</div>
-                            <div className="md:col-span-4 font-medium text-2xl text-primary whitespace-pre-line">{item.title}</div>
+                            <div className="md:col-span-4 font-medium text-2xl text-primary">{item.title}</div>
                             <div className="md:col-span-6 font-light text-secondaryLight text-lg leading-[1.7]">
                                 {item.desc}
                             </div>
