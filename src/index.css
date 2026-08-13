@@ -1,15 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-base: #FAFAF9;
+  --color-primary: #1C1917;
+  --color-accent: #A16207;
+  --color-surface: rgba(28, 25, 23, 0.03);
+  --color-secondaryLight: #64748B;
+  --color-secondaryDark: #E8ECF0;
+  
+  --ease-emil: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 @layer base {
   body {
-    @apply bg-base text-primary antialiased;
-    font-family: 'Inter', sans-serif;
+    background-color: var(--color-base);
+    color: var(--color-primary);
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans);
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-serif);
   }
 }
 
