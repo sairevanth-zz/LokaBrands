@@ -239,7 +239,7 @@ export default function App() {
                   initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
                   className="h-[600px] w-full rounded-[2.5rem] p-2 glass-panel"
               >
-                <img src="/assets/images/founder_leadership.jpg" alt="Leadership & Advisory" className="w-full h-full object-cover rounded-[2rem] mix-blend-luminosity opacity-80 hover:opacity-100 hover:mix-blend-normal transition-all duration-1000" />
+                <img src="/assets/images/founder.jpg" alt="Leadership & Advisory" className="w-full h-full object-cover rounded-[2rem] mix-blend-luminosity opacity-80 hover:opacity-100 hover:mix-blend-normal transition-all duration-1000" />
               </motion.div>
               
               <div className="space-y-10">
