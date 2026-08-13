@@ -44,22 +44,22 @@ export default function App() {
         <ShaderGradientCanvas style={{ position: 'absolute', inset: 0 }}>
           <ShaderGradient
             control='query'
-            urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%23000000&color2=%230a0a0a&color3=%231a1a1a&envPreset=city&format=gif&fov=45&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=waterPlane&uAmplitude=2.5&uDensity=1.1&uFrequency=5.5&uSpeed=0.1&uStrength=1.5&uTime=0&wireframe=false'
+            urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.5&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%231e1b4b&color2=%230f172a&color3=%23000000&envPreset=city&format=gif&fov=45&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1&positionX=-1.4&positionY=0&positionZ=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&type=waterPlane&uAmplitude=2.5&uDensity=1.1&uFrequency=5.5&uSpeed=0.2&uStrength=1.5&uTime=0&wireframe=false'
           />
         </ShaderGradientCanvas>
       </div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 p-4 md:px-8 md:py-4 transition-all">
-        <div className="w-full max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-8 py-4">
+        <div className="w-full max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-8 py-4 border border-white/10 shadow-2xl backdrop-blur-3xl">
           <div className="font-serif text-2xl tracking-wide cursor-pointer text-white">Loka.</div>
           <div className="hidden md:flex gap-12 font-medium text-sm tracking-widest uppercase text-white/80">
-            <a href="#about" className="link-hover">Vision</a>
-            <a href="#ecosystem" className="link-hover">Ecosystem</a>
-            <a href="#portfolio" className="link-hover">Portfolio</a>
+            <a href="#about" className="hover:text-white transition-colors duration-300">Vision</a>
+            <a href="#ecosystem" className="hover:text-white transition-colors duration-300">Ecosystem</a>
+            <a href="#portfolio" className="hover:text-white transition-colors duration-300">Portfolio</a>
           </div>
           <button 
-            className="text-sm font-medium uppercase tracking-widest text-white hover:text-[#0071E3] transition-colors duration-500"
+            className="text-sm font-medium uppercase tracking-widest text-white hover:text-white/70 transition-colors duration-500"
             onClick={() => openModal('contact')}
           >
             Partner With Us
@@ -71,10 +71,17 @@ export default function App() {
         {/* Hero Section */}
         <section className="relative min-h-screen flex flex-col items-center justify-center p-6 md:p-12 pb-24">
           
-          <div className="z-10 text-center space-y-12 max-w-5xl mx-auto mt-24">
+          <div className="z-10 text-center space-y-8 max-w-5xl mx-auto mt-24">
+              <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5, ease: "easeOut" }}
+                  className="w-full flex justify-center items-center h-64 md:h-80 lg:h-96 -mb-8"
+              >
+                  <iframe src="/liquid-logo/index.html" className="w-[500px] h-[500px] border-none pointer-events-auto" title="Loka Liquid Logo" />
+              </motion.div>
+              
               <motion.h1 
                   initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                  className="font-sans font-medium text-[clamp(3.5rem,8vw,8rem)] leading-[1.05] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 drop-shadow-2xl"
+                  className="font-sans font-medium text-[clamp(3.5rem,8vw,8rem)] leading-[1.05] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 drop-shadow-2xl relative z-10 pointer-events-none"
               >
                   Premium Wellness<br />
                   Democratized.
